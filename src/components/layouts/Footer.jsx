@@ -1,7 +1,7 @@
-import React from 'react'
+
 import Container from '../Container'
 import Flex from '../Flex'
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/Logo.png'
 import Image from '../Image'
 import PortionHeading from '../PortionHeading'
 import List from '../List'
