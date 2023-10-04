@@ -26,7 +26,9 @@ const handleDecrement = (item) => {
 const [open,setOpen] = useState(false)
 const [total,setTotal] = useState(0)
 const cart = useSelector(state => state.cart.cartItem)
-console.log(cart)
+const showCart = useSelector(state=>state.cart.showCart)
+console.log(showCart)
+// console.log(cart)
 useEffect(()=>{
     let total = 0
     cart.map(item=>{
@@ -53,7 +55,7 @@ useEffect(()=>{
                 <FaShoppingCart onClick={()=> setOpen(!open)}/> {cart.length}
                 </Flex>
             </Flex>
-            {open && <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
+            {open || showCart && <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
             <FaShoppingCart onClick={()=> setOpen(!open)}/>
             <ul className='flex justify-between py-5 px-2 bg-ash text-black'>
               <li>Action</li>

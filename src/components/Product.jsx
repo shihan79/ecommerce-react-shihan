@@ -7,11 +7,13 @@ import Badge from './Badge'
 import PortionHeading from './PortionHeading'
 import Flex from './Flex'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../slices/cartSlices'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart, setShowCart } from '../slices/cartSlices'
 
 const Product = ({heading}) => {
   const dispatch = useDispatch()
+  const showCart = useSelector(state=>state.cart.showCart)
+  console.log(showCart)
   const handleCart = () => {
        dispatch(addToCart({
         title : heading,
@@ -19,6 +21,7 @@ const Product = ({heading}) => {
         image : Productimg,
         quantity:1
        }))
+       dispatch(setShowCart(true))
   }
   return (
    <div className='mx-3'>
