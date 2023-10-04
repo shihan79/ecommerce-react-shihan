@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { pageName } from '../../slices/breadCrumSlices'
 import { useEffect, useState } from 'react'
-import { decrement, increment, removeFromCart } from '../../slices/cartSlices'
+import { decrement, increment, removeFromCart, setShowCart } from '../../slices/cartSlices'
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const handleIncrement = (item) =>{
 const handleDecrement = (item) => {
            dispatch(decrement(item))
 }
-const [open,setOpen] = useState(false)
+// const [open,setOpen] = useState(false)
 const [total,setTotal] = useState(0)
 const cart = useSelector(state => state.cart.cartItem)
 const showCart = useSelector(state=>state.cart.showCart)
@@ -52,11 +52,11 @@ useEffect(()=>{
                 </Link>
                 <RxTriangleDown />
                 </Flex>
-                <FaShoppingCart onClick={()=> setOpen(!open)}/> {cart.length}
+                <FaShoppingCart onClick={()=>dispatch(setShowCart(true))}/> {cart.length}
                 </Flex>
             </Flex>
-            {open || showCart && <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
-            <FaShoppingCart onClick={()=> setOpen(!open)}/>
+            { showCart && <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
+            <FaShoppingCart onClick={()=>dispatch(setShowCart(false))}/>
             <ul className='flex justify-between py-5 px-2 bg-ash text-black'>
               <li>Action</li>
               <li>Product</li>
