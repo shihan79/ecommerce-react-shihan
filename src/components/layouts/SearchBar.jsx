@@ -6,6 +6,7 @@ import {TiDeleteOutline} from 'react-icons/ti'
 import {BiSolidUser} from 'react-icons/bi'
 import {RxTriangleDown} from 'react-icons/rx'
 import { AiOutlineSearch } from 'react-icons/ai'
+import {RxCross2} from 'react-icons/rx'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { pageName } from '../../slices/breadCrumSlices'
@@ -56,7 +57,7 @@ useEffect(()=>{
                 </Flex>
             </Flex>
             { showCart && <div className='w-2/6 bg-black text-white h-screen absolute top-0 right-0 z-10'>
-            <FaShoppingCart onClick={()=>dispatch(setShowCart(false))}/>
+            <RxCross2 onClick={()=>dispatch(setShowCart(false))}/>
             <ul className='flex justify-between py-5 px-2 bg-ash text-black'>
               <li>Action</li>
               <li>Product</li>
